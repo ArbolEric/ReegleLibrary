@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <LinearLayout style="@style/Reegle.reegle_stuff_info"
+                  android:id="@+id/wait_for_reegle_stuff">
+        <TextView style="@style/Reegle.note"
+                  android:text="@string/reegle_db_stuff"
+                />
+        <ProgressBar style="@style/ReegleProgressWheel" />
+    </LinearLayout>
+    <LinearLayout style="@style/Reegle.reegle_stuff_info"
+                  android:visibility="gone"
+                  android:id="@+id/reegle_stuff_error" >
+        <TextView style="@style/Reegle.note"
+                  android:id="@+id/reegle_stuff_error_msg"
+                />
+        <Button style="@style/ReegleButton"
+                android:id="@+id/retry_reegle_stuff"
+                android:text="@string/retry_reegle_stuff"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

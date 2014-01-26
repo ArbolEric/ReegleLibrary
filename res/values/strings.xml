@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reegle Library</string>
+    <string name="search_input_name">Search Name</string>
+    <string name="button_text">Save</string>
+    <string name="language_label">Languages:</string>
+    <string name="topic_label">Topics:</string>
+    <string name="countries_label">Countries:</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="favorites">Favorites</string>
+    <string name="add_search">Add Search</string>
+    <string name="retry_reegle_stuff">Retry</string>
+    <string name="new_search">New Search</string>
+    <string name="confirm_delete_search">Are you sure you want to delete search \"%s\"?</string>
+    <string name="confirm_remove_favorite">Sure you want to remove this document from your list of favorites?</string>
+    <string name="add_search">Add Search</string>
+    <string name="no_internet_connection">We need an Internet connection to download search metadata from Reegle. Please ensure Internet connection and retry.</string>
+    <string name="reegle_db_stuff">We are downloading search metadata from Reegle. Please wait while this is completed...</string>
+    <string name="no_searches">You haven\'t saved any searches yet. Hit \"Add Search\" to get started.</string>
+    <string name="no_documents">This search didn\'t return any results.</string>
+    <string name="wait_for_search">Retrieving search results...</string>
+</resources>

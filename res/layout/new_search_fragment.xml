@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              style="@style/Reegle.fragment"
+            android:id="@+id/new_search_fragment">
+
+    <TextView style="@style/Reegle.header"
+              android:id="@+id/new_search_subtitle"
+            />
+
+    <EditText style="@style/Reegle.form.input"
+            android:id="@+id/search_name"
+              android:hint="@string/search_input_name" />
+
+    <TextView style="@style/Reegle.form.label"
+              android:text="@string/topic_label"/>
+    <com.arbol.reegle.utility.MultiSelectionSpinner style="@style/Reegle.form.input"
+            android:id="@+id/select_topics"/>
+
+    <TextView style="@style/Reegle.form.label"
+              android:text="@string/countries_label"
+            />
+    <com.arbol.reegle.utility.MultiSelectionSpinner style="@style/Reegle.form.input"
+            android:id="@+id/select_countries"/>
+
+    <TextView style="@style/Reegle.form.label"
+              android:text="@string/language_label"
+            />
+    <com.arbol.reegle.utility.MultiSelectionSpinner style="@style/Reegle.form.input"
+            android:id="@+id/select_languages"
+            />
+
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button style="@style/ReegleButton"
+                android:id="@+id/save_search"
+                android:text="@string/button_text"  />
+        <Button style="@style/ReegleButton"
+                android:id="@+id/cancel_new_search"
+                android:text="@string/cancel"  />
+    </LinearLayout>
+
+
+</LinearLayout>

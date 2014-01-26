@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+            style="@style/Reegle.fragment"
+            android:id="@+id/search_list_fragment"
+        >
+
+    <!-- Toolbar -->
+    <LinearLayout style="@style/Reegle.toolbar">
+        <RelativeLayout style="@style/Reegle.actionGroup"
+                        android:id="@+id/add_search">
+            <ImageView style="@style/Reegle.actionElem.icon"
+                       android:src="@drawable/ic_reegle_plus"
+                       android:id="@+id/add_search_icon"
+                    />
+            <TextView style="@style/Reegle.actionElem"
+                      android:layout_toRightOf="@+id/add_search_icon"
+                      android:text="@string/add_search"/>
+        </RelativeLayout>
+        <RelativeLayout style="@style/Reegle.actionGroup"
+                        android:id="@+id/favorite_list_item">
+
+            <TextView  style="@style/Reegle.actionElem"
+                    android:layout_toRightOf="@+id/favorites_icon"
+                    android:text="@string/favorites"/>
+            <ImageView style="@style/Reegle.actionElem.icon"
+                       android:src="@drawable/ic_action_unstar"
+                       android:id="@+id/favorites_icon"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
+    <View style="@style/GreyBreak"/>
+
+    <!-- Search List -->
+    <LinearLayout style="@style/Reegle.list_wrapper">
+        <ExpandableListView style="@style/Reegle.list"
+                android:id="@+id/search_list"/>
+        <!-- No Results View -->
+        <TextView style="@style/Reegle.note"
+                  android:id="@+id/empty_search_list"
+                  android:text="@string/no_searches"
+                  android:layout_height="match_parent"
+                  android:layout_width="match_parent"
+                />
+        </LinearLayout>
+
+
+
+</LinearLayout> 

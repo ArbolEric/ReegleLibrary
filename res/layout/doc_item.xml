@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/list_item_wrapper">
+    <LinearLayout
+            style="@style/Reegle.list_item.doc"
+            android:orientation="vertical">
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/doc_title_wrapper">
+
+            <TextView style="@style/Reegle.list_header.doc"
+                    android:id="@+id/document_name"
+                    />
+            <ImageButton style="@style/ReegleButton"
+                    android:id="@+id/favorite_document"
+                    android:src="@drawable/ic_action_star"
+                    android:layout_alignParentRight="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    />
+        </RelativeLayout>
+        <TextView style="@style/Reegle.details.document_preview"
+                android:id="@+id/document_preview" />
+
+    </LinearLayout>
+</LinearLayout>

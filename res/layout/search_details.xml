@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/tableLayout1"
+             android:orientation="vertical"
+             style="@style/Reegle.detailBox" >
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView style="@style/Reegle.search_details_label"
+                android:id="@+id/topics_label"
+                android:text="@string/topic_label"/>
+
+        <TextView style="@style/Reegle.details.search"
+                  android:layout_toRightOf="@id/topics_label"
+                android:id="@+id/topics_values"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView style="@style/Reegle.search_details_label"
+                android:text="@string/countries_label"
+                android:id="@+id/countries_label"/>
+
+        <TextView style="@style/Reegle.details.search"
+                  android:layout_toRightOf="@id/countries_label"
+                android:id="@+id/countries_values"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+        <TextView style="@style/Reegle.search_details_label"
+                android:id="@+id/languages_label"
+                android:text="@string/language_label"/>
+
+        <TextView style="@style/Reegle.details.search"
+                  android:layout_toRightOf="@+id/languages_label"
+                android:id="@+id/languages_values"/>
+    </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView style="@style/ReegleButton"
+                       android:id="@+id/edit_search"
+                       android:src="@drawable/ic_action_edit" />
+            <ImageView style="@style/ReegleButton"
+                       android:id="@+id/delete_search"
+                       android:src="@drawable/ic_action_delete"
+                        android:layout_toRightOf="@id/edit_search"/>
+        </RelativeLayout>
+
+</LinearLayout>
