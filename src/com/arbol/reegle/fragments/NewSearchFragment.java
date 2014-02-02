@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.arbol.reegle.MainActivity;
 import com.arbol.reegle.R;
-import com.arbol.reegle.adapters.MainTabsAdapter;
 import com.arbol.reegle.db.*;
 import com.arbol.reegle.models.Country;
 import com.arbol.reegle.models.Language;
@@ -23,8 +22,6 @@ import com.arbol.reegle.models.Topic;
 import com.arbol.reegle.utility.ListUtils;
 import com.arbol.reegle.utility.MultiSelectionSpinner;
 import com.arbol.reegle.utility.SearchManager;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,7 +45,6 @@ public class NewSearchFragment extends Fragment {
     private Boolean initiated = false;
 
     private void setContext(){
-        Log.d("FragmentInstances", "Setting Context");
         dbHelper = new MySQLiteHelper(activity);
         this.searchManager = this.activity.currentManagerFragment();
         if (initiated){
@@ -60,7 +56,6 @@ public class NewSearchFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Retain this fragment across configuration changes.
-        Log.d("Lifecycle", "recreating the whole fucking fragment");
         setRetainInstance(true);
     }
 
@@ -90,7 +85,6 @@ public class NewSearchFragment extends Fragment {
             initForm();
             fnClear();
             initiated = true;
-            Log.d("Lifecycle", initiated.toString());
         }
     }
 
@@ -99,13 +93,11 @@ public class NewSearchFragment extends Fragment {
         super.onDetach();
         activity = null;
         dbHelper = null;
-        Log.d("Lifecycle", "detaching NewSearchFragment from activity");
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
-        Log.d("Lifecycle", "NewSearchFragment.onSaveInstanceState");
         outState.putBoolean("bInitiated", true);
     }
 
@@ -114,7 +106,6 @@ public class NewSearchFragment extends Fragment {
      */
 
     private void initForm(){
-        Log.d("Lifecycle", "Initializing form");
         save = view.findViewById(R.id.save_search);
         cancel = view.findViewById(R.id.cancel_new_search);
         database = dbHelper.getWritableDatabase();
@@ -137,7 +128,6 @@ public class NewSearchFragment extends Fragment {
     }
 
     private void setClickListeners(){
-        Log.d("FragmentInstances", "NewSearchFragment => setting onClickListeners");
         // Save Values in Form to Search_Table
         save.setOnClickListener(saveListener());
         // clear form values
@@ -146,7 +136,6 @@ public class NewSearchFragment extends Fragment {
 
     // Pre-Populate form and set bUpdate and UPDATE_ID for form submission.
     public void setForm(Long id){
-        Log.d("Lifecycle", "setting from");
         if (id == null){  // Adding new search
             fnClear();
         } else {
@@ -165,7 +154,6 @@ public class NewSearchFragment extends Fragment {
 
     // clear form inputs
     private void fnClear(){
-        Log.d("Lifecycle", "clearing form");
         // Clear form values.
         vName.setText("");
         vCountries.clearSelection();

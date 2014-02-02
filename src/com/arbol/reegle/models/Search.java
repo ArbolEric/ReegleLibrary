@@ -87,7 +87,7 @@ public class Search {
      */
 
     public static final String DOCCT = "50";
-    private static final String TOKEN = "";
+    private static final String TOKEN = "049c40fe354c46859f3cd41405490d6c";
     public Long id;
     public String name;
     public String languages;
@@ -113,8 +113,6 @@ public class Search {
         this.languages = values.getAsString(Search_Table.COLUMN_LANGUAGES);
         this.topics = values.getAsString(Search_Table.COLUMN_TOPICS);
         this.countries = values.getAsString(Search_Table.COLUMN_COUNTRIES);
-
-        Log.d("Arbol", "search's recently id = "+Long.toString(this.id));
     }
 
     public ContentValues toValues(){
@@ -133,9 +131,6 @@ public class Search {
 
     // Save changes to database
     private void save(SQLiteDatabase database) {
-        Log.d("Arbol", "search.save");
-        Log.d("Arbol", database.toString());
-        Log.d("Arbol", Long.toString(id));
         String where = Search_Table.COLUMN_ID + "=?";
         database.update(Search_Table.TABLE_SEARCH, this.toValues(), where, new String[]{Long.toString(id)});
     }
@@ -178,8 +173,11 @@ public class Search {
      * Execute Search
      */
 
-    public ExecSearch exec (SQLiteDatabase database, MainActivity activity){
-        Log.d("Arbol", "should not be executing this search");
+    public ExecSearch exec (SQLiteDatabase database, MainActivity activity) {
+        if (TOKEN == null){
+            activity.currentManagerFragment().searchError("No authorized Reelge Token.");
+            return null;
+        }
         ExecSearch e = new ExecSearch(database, activity);
         e.execute();
         return e;
@@ -190,6 +188,7 @@ public class Search {
         private String url;
         private ArrayList<ReegleDoc> reegleDocs;
         private MainActivity activity;
+        public Boolean isComplete = false;
 
         public ExecSearch(SQLiteDatabase database, MainActivity activity){
             this.activity = activity;
@@ -203,7 +202,6 @@ public class Search {
 
         @Override
         protected Void doInBackground(Void... params) {
-            Log.d("Arbol", "Executing call to Reegle.");
             reegleDocs = new ArrayList<ReegleDoc>();
             HttpClient httpclient = new DefaultHttpClient();
             HttpGet request = new HttpGet(url);
@@ -218,21 +216,22 @@ public class Search {
                 StringBuffer result = new StringBuffer();
                 String line = "";
                 while ((line = rd.readLine()) != null) {
+                    if (isCancelled()) return null;
                     result.append(line);
                 }
+                if (isCancelled()) return null;
                 reegleDocs = parseResults(result);
             }  catch (IOException e) {
+                cancel(true);
                 activity.currentManagerFragment().searchError(search_error);
-                e.printStackTrace();
             }
-            Log.d("Arbol", "AsyncTask done.");
             return null;
         }
 
         @Override
         protected void onPostExecute(Void x) {
-            Log.d("Arbol", "onPostExecute called.");
             activity.currentManagerFragment().resultsReturned(reegleDocs);
+            isComplete = true;
         }
 
         private ArrayList<ReegleDoc> parseResults(StringBuffer result){
@@ -242,12 +241,13 @@ public class Search {
                 JSONArray aDocs = json.getJSONArray("documents");
                 Integer l = aDocs.length();
                 for (Integer i=0; i<l; i++){
+                    if (isCancelled()) return null;
                     docs.add(new ReegleDoc(aDocs.getJSONObject(i)));
                 }
                 return docs;
             } catch (JSONException e) {
-                    activity.currentManagerFragment().searchError(search_error);
-                    e.printStackTrace();
+                cancel(true);
+                activity.currentManagerFragment().searchError(search_error);
                 return null;
             }
         }

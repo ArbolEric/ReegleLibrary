@@ -14,9 +14,6 @@ public class Read_Table {
     public static final String TABLE_READ = "read";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_DOCID = "docId";
-    public static final String[] COLUMNS = {
-
-    };
 
     // Database creation SQL statement
     private static final String CREATE = String.format(

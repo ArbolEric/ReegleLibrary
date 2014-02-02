@@ -1,7 +1,5 @@
 package com.arbol.reegle.db;
 
-import org.json.JSONObject;
-import java.net.URL;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 

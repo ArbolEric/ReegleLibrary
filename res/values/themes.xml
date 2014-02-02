@@ -111,7 +111,8 @@
     <style name="Reegle.list_header">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginLeft">17dp</item>
+        <item name="android:layout_marginRight">25dp</item>
         <item name="android:textStyle">bold|italic</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_alignParentLeft">true</item>
@@ -148,11 +149,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_weight">.25</item>
     </style>
 
     <style name="Reegle.details.search">
-        <item name="android:layout_weight">.75</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -161,6 +162,10 @@
     <style name="Reegle.details.document_preview">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+
         <item name="android:textSize">12sp</item>
     </style>
 

@@ -8,11 +8,15 @@
                 style="@style/Reegle.list_item.search" >
 
         <TextView style="@style/Reegle.list_header.doc"
-                android:id="@+id/search_name"/>
+                android:id="@+id/search_name"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
        <ImageView style="@style/ReegleButton"
                   android:layout_alignParentRight="true"
                 android:src="@drawable/ic_action_search"
                 android:id="@+id/exec_search"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 />
 
     </RelativeLayout>

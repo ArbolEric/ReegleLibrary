@@ -2,25 +2,15 @@ package com.arbol.reegle;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.arbol.reegle.adapters.MainTabsAdapter;
 import com.arbol.reegle.fragments.*;
 import android.support.v4.app.FragmentManager;
-import com.arbol.reegle.utility.ReegleDoc;
-import com.arbol.reegle.utility.SearchManager;
-
-import java.util.ArrayList;
 
 /**
  * Created by user on 12/23/13.
@@ -58,7 +48,6 @@ public class MainActivity extends ActionBarActivity implements
         if (prefs.getBoolean(DATA_STUFFED, false)) {
             renderTabs();
         } else {
-            Log.d("ReegleStuffFragment", "Main view set to main_reegle_stuff");
             stuffReegle();
         }
     }
@@ -98,11 +87,9 @@ public class MainActivity extends ActionBarActivity implements
 
     private void stuffReegle(){
         setContentView(R.layout.main);
-        Log.d("ReegleStuffFragment", "ManagerFragment called stuffReegle()");
         FragmentManager fm = getSupportFragmentManager();
         ReegleStuffFragment reegleStuffFragment = (ReegleStuffFragment) fm.findFragmentByTag(ReegleStuffFragment.TAG);
         if (reegleStuffFragment == null){
-            Log.d("ReegleStuffFragment", "creating new ReegleStuffFragment");
             reegleStuffFragment = new ReegleStuffFragment();
             fm.beginTransaction().add(R.id.fragment_container, reegleStuffFragment, ReegleStuffFragment.TAG).commit();
         }

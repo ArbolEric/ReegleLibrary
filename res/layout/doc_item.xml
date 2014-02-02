@@ -14,7 +14,7 @@
             <TextView style="@style/Reegle.list_header.doc"
                     android:id="@+id/document_name"
                     />
-            <ImageButton style="@style/ReegleButton"
+            <ImageView style="@style/ReegleButton"
                     android:id="@+id/favorite_document"
                     android:src="@drawable/ic_action_star"
                     android:layout_alignParentRight="true"

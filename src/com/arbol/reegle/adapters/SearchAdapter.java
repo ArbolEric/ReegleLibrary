@@ -2,7 +2,6 @@ package com.arbol.reegle.adapters;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -12,8 +11,6 @@ import android.widget.*;
 import com.arbol.reegle.MainActivity;
 import com.arbol.reegle.db.*;
 import com.arbol.reegle.R;
-import com.arbol.reegle.fragments.DocListFragment;
-import com.arbol.reegle.fragments.SearchListFragment;
 import com.arbol.reegle.models.Search;
 import com.arbol.reegle.utility.SearchManager;
 
@@ -143,7 +140,6 @@ public class SearchAdapter extends BaseExpandableListAdapter {
         detailsHolder.edit.setOnClickListener(editSearchListener);
         // Remove from database and refresh when Remove button clicked.
         detailsHolder.remove.setOnClickListener(deleteSearchListener);
-
         return detailsView;
     }
 

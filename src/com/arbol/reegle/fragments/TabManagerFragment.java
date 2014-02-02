@@ -49,7 +49,6 @@ public class TabManagerFragment extends Fragment implements
 
     @Override
     public void onAttach(Activity activity) {
-        Log.d("SearchTask", "TabManagerFragment attached");
         super.onAttach(activity);
         this.activity = (MainActivity) activity;
     }
@@ -194,12 +193,8 @@ public class TabManagerFragment extends Fragment implements
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        if (activity == null){
-            Log.d("ClickListeners", "activity is null");
-
-        } else {
+        if (activity != null){
             ViewPager mPager = (ViewPager) activity.findViewById(R.id.main_slider);
-            Log.d("ClickListeners", mPager.toString());
             mPager.setCurrentItem(tab.getPosition());
         }
     }
@@ -220,7 +215,6 @@ public class TabManagerFragment extends Fragment implements
 
     @Override
     public void allFragmentsInstantiated(){
-        Log.d("SearchTask", "All have been received");
         fragmentsInstantiated = true;
         newSearchFragment = mainTabsAdapter.getNewSearchFragment();
         searchListFragment = mainTabsAdapter.getSearchListFragment();

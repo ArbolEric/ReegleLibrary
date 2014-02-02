@@ -3,7 +3,6 @@ package com.arbol.reegle.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 import com.arbol.reegle.fragments.DocListFragment;
@@ -79,7 +78,6 @@ public class MainTabsAdapter extends FragmentPagerAdapter {
         if (registeredFragments.size() == NUM) {
             fragmentReceiver.allFragmentsInstantiated();
         }
-        Log.d("FragmentInstances", Integer.toString(registeredFragments.size()));
         return fragment;
     }
 
@@ -90,10 +88,6 @@ public class MainTabsAdapter extends FragmentPagerAdapter {
     }
 
     private Fragment getRegisteredFragment(int position) {
-        Log.d("FragmentInstances", "getRegisteredFragment");
-       // Log.d("FragmentInstances", Integer.toString(position));
-       // Log.d("FragmentInstances", registeredFragments.get(position).toString());
-
         return registeredFragments.get(position);
     }
 

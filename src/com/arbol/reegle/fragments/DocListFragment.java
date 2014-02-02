@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,16 +105,18 @@ public class DocListFragment extends Fragment {
     }
 
     public void execSearch(Long searchId) {
+        if (pendingSearch != null) {
+            pendingSearch.cancel(true);
+        }
+
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         TextView title = (TextView) view.findViewById(R.id.search_title);
         if (searchId == null) {
-            Log.d("DocListFragment", "execSearch Favorites");
             mAdapter.showFavorites(database);
             title.setText(R.string.favorites);
             fnUnWait();
             database.close();
         } else {
-            Log.d("DocListFragment", "execSearch"+Long.toString(searchId));
             fnWait();
             Search search = Search.fnGet(searchId, database);
             pendingSearch = search.exec(database, activity);
@@ -124,7 +125,6 @@ public class DocListFragment extends Fragment {
     }
 
     public void displayResults(ArrayList<ReegleDoc> reegleDocs) {
-        Log.d("DocListFragment", "resultsReturned");
         if (reegleDocs == null){
             reegleDocs = new ArrayList<ReegleDoc>();
         }
@@ -137,12 +137,10 @@ public class DocListFragment extends Fragment {
     }
 
     private void fnWait(){
-        Log.d("DocListFragment", "fnWait");
         view.findViewById(R.id.wait_for_search).setVisibility(View.VISIBLE);
     }
 
     private void fnUnWait(){
-        Log.d("DocListFragment", "fnUnWait");
         view.findViewById(R.id.wait_for_search).setVisibility(View.GONE);;
     }
 

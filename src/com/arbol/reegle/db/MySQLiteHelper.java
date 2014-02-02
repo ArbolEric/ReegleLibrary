@@ -3,7 +3,6 @@ package com.arbol.reegle.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "reegle.db";
@@ -17,7 +16,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        Log.d("Arbol", "Creating the database");
         Search_Table.onCreate(database);
         Favorite_Table.onCreate(database);
         Read_Table.onCreate(database);

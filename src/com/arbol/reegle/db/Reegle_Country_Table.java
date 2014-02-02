@@ -27,8 +27,4 @@ public class Reegle_Country_Table {
     public static void onCreate(SQLiteDatabase database, Context context) {
         // do nothing
     }
-
-    public static void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-        // do nothing
-    }
 }

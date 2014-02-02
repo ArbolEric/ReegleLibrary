@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import com.arbol.reegle.models.Favorite;
 import com.arbol.reegle.models.Read;
 import com.arbol.reegle.R;
 import com.arbol.reegle.utility.ReegleDoc;
-import com.arbol.reegle.utility.SearchManager;
 
 import java.util.ArrayList;
 
@@ -116,7 +113,7 @@ public class DocumentAdapter extends BaseAdapter {
             docHolder = new DocHolder();
             docHolder.name = (TextView) groupView.findViewById(R.id.document_name);
             docHolder.preview = (TextView) groupView.findViewById(R.id.document_preview);
-            docHolder.favorite = (ImageButton) groupView.findViewById(R.id.favorite_document);
+            docHolder.favorite = (ImageView) groupView.findViewById(R.id.favorite_document);
             groupView.setTag(docHolder);
         } else {
             docHolder = (DocHolder) groupView.getTag();
@@ -165,7 +162,7 @@ public class DocumentAdapter extends BaseAdapter {
     static class DocHolder {
         public TextView name;
         public TextView preview;
-        public ImageButton favorite;
+        public ImageView favorite;
     }
 
     /*
@@ -175,7 +172,6 @@ public class DocumentAdapter extends BaseAdapter {
     private final View.OnClickListener toggleFavoritesListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
             ReegleDoc doc = (ReegleDoc) v.getTag();
             if (bFavorites) { // If this is a list of favorites
                 buildDeleteFavDialog(doc, activity);
@@ -184,10 +180,10 @@ public class DocumentAdapter extends BaseAdapter {
                 Boolean bAdded = Favorite.toggle(doc, database);
                 database.close();
                 if (bAdded){
-                    ((ImageButton) v).setImageResource(R.drawable.ic_action_unstar);
+                    ((ImageView) v).setImageResource(R.drawable.ic_action_unstar);
                     favoriteIds.add(doc.docId);
                 } else {
-                    ((ImageButton) v).setImageResource(R.drawable.ic_action_star);
+                    ((ImageView) v).setImageResource(R.drawable.ic_action_star);
                     favoriteIds.remove(favoriteIds.indexOf(doc.docId));
                 }
             }

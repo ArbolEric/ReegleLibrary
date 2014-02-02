@@ -9,11 +9,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import com.arbol.reegle.MainActivity;
 import com.arbol.reegle.R;
 import com.arbol.reegle.db.MySQLiteHelper;
@@ -83,7 +81,6 @@ public class ReegleStuffFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-        Log.d("SearchTask", "ReegleStuffFragment onActivityCreated");
         setRetryListener();
         if (!initiated) {
             stuffReegleData();
@@ -153,7 +150,6 @@ public class ReegleStuffFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            Log.d("Arbol", "Exectuting stuffTopics");
             try {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost("http://poolparty.reegle.info/PoolParty/sparql/glossary?format=application/json");

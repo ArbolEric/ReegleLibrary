@@ -5,45 +5,45 @@
              android:orientation="vertical"
              style="@style/Reegle.detailBox" >
 
-    <RelativeLayout
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <TextView style="@style/Reegle.search_details_label"
                 android:id="@+id/topics_label"
                 android:text="@string/topic_label"/>
 
         <TextView style="@style/Reegle.details.search"
-                  android:layout_toRightOf="@id/topics_label"
                 android:id="@+id/topics_values"/>
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <TextView style="@style/Reegle.search_details_label"
                 android:text="@string/countries_label"
                 android:id="@+id/countries_label"/>
 
         <TextView style="@style/Reegle.details.search"
-                  android:layout_toRightOf="@id/countries_label"
                 android:id="@+id/countries_values"/>
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="1">
+            android:orientation="vertical">
 
         <TextView style="@style/Reegle.search_details_label"
                 android:id="@+id/languages_label"
                 android:text="@string/language_label"/>
 
         <TextView style="@style/Reegle.details.search"
-                  android:layout_toRightOf="@+id/languages_label"
+                  android:layout_toRightOf="@id/languages_label"
                 android:id="@+id/languages_values"/>
-    </RelativeLayout>
+    </LinearLayout>
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

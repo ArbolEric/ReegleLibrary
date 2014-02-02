@@ -1,7 +1,5 @@
 package com.arbol.reegle.utility;
 
-import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 
 /**
