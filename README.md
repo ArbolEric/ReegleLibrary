@@ -7,5 +7,3 @@ This is an open source project intended to make access of Reegle's [recommended 
 If you are interested in this project or any others related to organization of environmental content and data, your feedback is welcome.
 
 You can follow me on Twitter at [@ArbolIntl](https://twitter.com/ArbolIntl).
-
-*Note:* Before generating an apk from source, you must go to src/models/Search.java and enter a valid [Reegle API token](http://api.reegle.info/register).
