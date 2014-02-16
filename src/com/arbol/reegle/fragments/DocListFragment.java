@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,7 +109,6 @@ public class DocListFragment extends Fragment {
         if (pendingSearch != null) {
             pendingSearch.cancel(true);
         }
-
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         TextView title = (TextView) view.findViewById(R.id.search_title);
         if (searchId == null) {
@@ -125,15 +125,9 @@ public class DocListFragment extends Fragment {
     }
 
     public void displayResults(ArrayList<ReegleDoc> reegleDocs) {
-        if (reegleDocs == null){
-            reegleDocs = new ArrayList<ReegleDoc>();
-        }
+        Log.d("Arbol", "docListFragment.displayResults");
         mAdapter.setResults(reegleDocs);
         fnUnWait();
-    }
-
-    public void searchError(String err){
-        activity.toaster(err);
     }
 
     private void fnWait(){
@@ -141,7 +135,8 @@ public class DocListFragment extends Fragment {
     }
 
     private void fnUnWait(){
-        view.findViewById(R.id.wait_for_search).setVisibility(View.GONE);;
+        Log.d("Arbol", "docListFragment.fnUnWait");
+        Log.d("Arbol", view.findViewById(R.id.wait_for_search).toString());
+        view.findViewById(R.id.wait_for_search).setVisibility(View.GONE);
     }
-
 }

@@ -19,5 +19,5 @@
     <string name="reegle_db_stuff">We are downloading search metadata from Reegle. Please wait while this is completed...</string>
     <string name="no_searches">You haven\'t saved any searches yet. Hit \"Add Search\" to get started.</string>
     <string name="no_documents">This search didn\'t return any results.</string>
-    <string name="wait_for_search">Retrieving search results...</string>
+    <string name="wait_for_search1">Retrieving search results...</string>
 </resources>

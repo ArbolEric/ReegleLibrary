@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,12 +51,16 @@ public class DocumentAdapter extends BaseAdapter {
 
 
     private void setDocs(ArrayList<ReegleDoc> reegleDocs){
+        Log.d("Arbol", "documentAdapter.setDocs");
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         if (docs == null) {
             this.docs = reegleDocs;
         } else {
+            Log.d("Arbol", "data set changing");
             this.docs = reegleDocs;
+            Log.d("Arbol", Integer.toString(reegleDocs.size()));
             notifyDataSetChanged();
+            Log.d("Arbol", "data set changed");
         }
         favoriteIds = Favorite.fnCheck(docs, database);
         readIds = Read.fnCheck(docs, database);
@@ -77,6 +82,11 @@ public class DocumentAdapter extends BaseAdapter {
     }
 
     public void setResults(ArrayList<ReegleDoc> reegleDocs) {
+        if (reegleDocs == null){
+            Log.d("Arbol", "reegleDocs null");
+            reegleDocs = new ArrayList<ReegleDoc>();
+        }
+        Log.d("Arbol", "documentAdapter.setResults");
         bFavorites = false;
         setDocs(reegleDocs);
     }
@@ -127,25 +137,21 @@ public class DocumentAdapter extends BaseAdapter {
          * Display document text style and favorite star based on status
          */
 
-        // If this is a list of favorites
+        if (readIds.contains(doc.docId)){
+            // If document read
+            docHolder.name.setTypeface(Typeface.DEFAULT);
+        } else {
+            docHolder.name.setTypeface(Typeface.DEFAULT_BOLD);
+        }
         if (bFavorites){
             // all favorited and all read
             docHolder.favorite.setImageResource(R.drawable.ic_action_unstar);
-            docHolder.name.setTypeface(Typeface.DEFAULT);
         } else {
             if (favoriteIds.contains(doc.docId)){
                 // If document already favorited
                 docHolder.favorite.setImageResource(R.drawable.ic_action_unstar);
             } else {
-                // If document not favorited
                 docHolder.favorite.setImageResource(R.drawable.ic_action_star);
-            }
-            if (readIds.contains(doc.docId)){
-                // If document read
-                docHolder.name.setTypeface(Typeface.DEFAULT);
-            } else {
-                // if document not read
-                docHolder.name.setTypeface(Typeface.DEFAULT_BOLD);
             }
         }
 

@@ -167,6 +167,7 @@ public class TabManagerFragment extends Fragment implements
 
     @Override
     public void resultsReturned(ArrayList<ReegleDoc> reegleDocs) {
+        Log.d("Arbol", "tabManagerFragment.resultsReturned");
         final ArrayList<ReegleDoc> REEGLE_DOCS = reegleDocs;
         executeFragmentDependency(new FragmentDependency() {
             @Override
@@ -178,13 +179,9 @@ public class TabManagerFragment extends Fragment implements
 
     @Override
     public void searchError(String err) {
-        final String ERR = err;
-        executeFragmentDependency(new FragmentDependency() {
-            @Override
-            public void success() {
-                docListFragment.searchError(ERR);
-            }
-        });
+        Log.d("Arbol", "tabManagerFragment.searchError");
+        ((MainActivity) activity).toaster(err);
+        resultsReturned(null);
     }
 
     /*

@@ -245,7 +245,8 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:background">@color/transparent_grey</item>
-
+        <item name="android:clickable">true</item>
+        <item name="android:visibility">visible</item>
     </style>
 
     <style name="Reegle.dialogBox">

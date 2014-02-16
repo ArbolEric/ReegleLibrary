@@ -87,7 +87,7 @@ public class Search {
      */
 
     public static final String DOCCT = "50";
-    private static final String TOKEN = "049c40fe354c46859f3cd41405490d6c";
+    private static final String TOKEN = "e37ed0340e534c5da2bdd60dce486abb";
     public Long id;
     public String name;
     public String languages;
@@ -175,7 +175,11 @@ public class Search {
 
     public ExecSearch exec (SQLiteDatabase database, MainActivity activity) {
         if (TOKEN == null){
-            activity.currentManagerFragment().searchError("No authorized Reelge Token.");
+            activity.currentManagerFragment().searchError("No authorized Reegle Token.");
+            return null;
+        }
+        if (!activity.isNetworkAvailable())  {
+            activity.currentManagerFragment().searchError("You need to connect to the Internet.");
             return null;
         }
         ExecSearch e = new ExecSearch(database, activity);
@@ -184,7 +188,8 @@ public class Search {
     }
 
     public class ExecSearch extends AsyncTask<Void, String, Void> {
-        private static final String search_error = "Error downloading results from Reegle.";
+        private static final String SEARCH_ERROR = "Error downloading results from Reegle.";
+        private String search_error;
         private String url;
         private ArrayList<ReegleDoc> reegleDocs;
         private MainActivity activity;
@@ -196,8 +201,8 @@ public class Search {
             database.close();
         }
 
-        public void setContext(MainActivity activity){
-            this.activity = activity;
+        public void setContext(MainActivity current_activity){
+            this.activity = current_activity;
         }
 
         @Override
@@ -222,15 +227,19 @@ public class Search {
                 if (isCancelled()) return null;
                 reegleDocs = parseResults(result);
             }  catch (IOException e) {
-                cancel(true);
-                activity.currentManagerFragment().searchError(search_error);
+                search_error = SEARCH_ERROR;
+                return null;
             }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void x) {
-            activity.currentManagerFragment().resultsReturned(reegleDocs);
+            if (search_error != null){
+                activity.currentManagerFragment().searchError(search_error);
+            } else {
+                activity.currentManagerFragment().resultsReturned(reegleDocs);
+            }
             isComplete = true;
         }
 
@@ -246,8 +255,7 @@ public class Search {
                 }
                 return docs;
             } catch (JSONException e) {
-                cancel(true);
-                activity.currentManagerFragment().searchError(search_error);
+                search_error = SEARCH_ERROR;
                 return null;
             }
         }

@@ -12,38 +12,33 @@
     
         <TextView style="@style/Reegle.header"
                   android:layout_height="wrap_content"
-                  android:layout_width="wrap_content"
+                  android:layout_width="match_parent"
                   android:text="@string/new_search"
                   android:id="@+id/search_title"
                 />
-    <LinearLayout style="@style/Reegle.list_wrapper">
-        <ListView style="@style/Reegle.list"
-                  android:layout_height="match_parent"
-                  android:layout_width="match_parent"
-                android:id="@+id/doc_list"/>
-        <TextView style="@style/Reegle.note"
-                  android:layout_height="match_parent"
-                  android:layout_width="match_parent"
-                  android:id="@+id/empty_doc_list"
-                  android:text="@string/no_documents"
-                />
-    </LinearLayout>
-    
-
+        <LinearLayout style="@style/Reegle.list_wrapper">
+            <ListView style="@style/Reegle.list"
+                      android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                    android:id="@+id/doc_list"/>
+            <TextView style="@style/Reegle.note"
+                      android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                      android:id="@+id/empty_doc_list"
+                      android:text="@string/no_documents"
+                    />
+        </LinearLayout>
     </LinearLayout>
         
     <!-- Wait Dialogue -->
     <RelativeLayout
-            style="@style/Reegle.dialogBackground"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/wait_for_search">
+            android:id="@+id/wait_for_search"
+            style="@style/Reegle.dialogBackground">
         <LinearLayout style="@style/Reegle.dialogBox">
             <TextView
                     style="@style/Reegle.note.dialog"
-                    android:text="@string/wait_for_search" />
+                    android:text="@string/wait_for_search1" />
             <ProgressBar style="@style/ReegleProgressWheel" />
-
-            </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
